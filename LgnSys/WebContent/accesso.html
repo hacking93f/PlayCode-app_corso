@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <script>
+
+        function cancella(){
+            document.modulo.reset();
+        }
+        function uguali(u,o){
+            if ((u.user==o.user)&&(u.pass==o.pass)) {
+
+
+                return true; }
+            return false;
+        }
+        function controlla(){
+            var u=JSON.parse(localStorage.utenti);
+
+            var lunghezza=u.length;
+            var o={ user:document.modulo.uname.value , pass:document.modulo.psw.value};
+
+
+            for(i=0;i<lunghezza;i++){
+                if(uguali(u[i],o)){
+                    var p=u[i].point;
+                    var aux={user:u[i].user,point:p};
+                    localStorage.lastUser=JSON.stringify(aux);
+                   location.href="index.html";
+                    return true;
+                }
+            }
+            alert("Username e/o password errati!");
+            return true;
+        }
+
+    </script>
+
+    <title>Accesso</title>
+    <style type="text/css">
+
+        form {
+            border: 3px solid #f1f1f1;
+            width: 40%;
+            position:relative ;
+            left:30%;
+            top:6%;
+        }
+
+
+        input[type=text] {
+            width: 28%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position:relative;
+            left:1%;
+
+        }
+        input[type=password] {
+            width: 28%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position:relative;
+            left:13%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: rgb(255, 255, 255);
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-family: Comic Sans MS;
+            border-radius:10px 10px 10px 10px;
+
+        }
+
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+
+        .cancelbtn {
+            width: auto;
+            padding: 5px 10px;
+            background-color: #f44336;
+            position:relative;
+            left:43%;
+            border-radius:10px 10px 10px 10px;
+        }
+
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+
+        .container {
+            padding: 16px;
+        }
+
+
+
+
+
+
+        </style>
+
+    <p align="center" style="font-family:Trebuchet; font-size: xx-large; color:black;">Effettua l'accesso e gioca! </p></font>
+</head>
+
+    <body style="background-image: url(d1.png)"  >
+
+      <form name="modulo">
+
+
+
+            <div class="container">
+              <label><b>Username</b></label>
+              <input type="text" id="username" placeholder="Inserisci Username" name="uname" required>
+
+              <label style="position:relative; left:10%;"><b>   Password</b></label>
+
+              <input type="password" id="password" placeholder="Inserisci Password" name="psw" required>
+
+              <button type="button" onclick="controlla()">Login</button>
+
+
+
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" class="cancelbtn" onclick="cancella()">Cancel</button>
+
+            </div>
+
+        </form>
+
+        <br>
+        <br>
+        <p align="center" style="font-family:Trebuchet; font-size: large; color:black;">Non ti sei ancora registrato? clicca il pulsante qui sotto  </font></p>
+        <br>
+        <p align="center"><input type="button" value="Registrati ora" onclick=location.href="registrazione.html"></p>
+        </form>
+</body>
+
+
+
+
+
+</html>
